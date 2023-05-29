@@ -8,6 +8,7 @@ const Login = () => {
     const [pass, setPass] = React.useState('')
     const [modo, setModo] = React.useState(false)
     const [error, setError] = React.useState(null)
+    const [lista, setLista] = React.useState([])
 
     const guardarDatos = (e) =>{
         e.preventDefault()
@@ -38,7 +39,20 @@ const Login = () => {
             setEmail('')
             setPass('')
             setError(null)
-            navigate('/admin')
+            const db = firebase.firestore()
+            const data = await db.collection('admin').get()
+            const arrayData = data.docs.map(doc=>({
+                id: doc.id,
+                ...doc.data()
+            }))
+            for (let index = 0; index < arrayData.length; index++) {
+                if (arrayData[index].email == res.user.email) {
+                    navigate('/admin')
+                }else{
+                    navigate('/user')
+                }
+            }
+
         } catch (error) {
             console.log(error.code)
             if (error.code === 'auth/wrong-password') {
@@ -50,13 +64,19 @@ const Login = () => {
         }
     }, [email, pass])
 
+    const confirmacion = React.useCallback(async()=>{
+        
+        setLista(arrayData)
+    })
+
     const registrar = React.useCallback(async()=>{
         try {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
             const db = firebase.firestore()
             await db.collection('usuarios').doc(res.user.email).set({
                 email: res.user.email,
-                id: res.user.uid
+                id: res.user.uid,
+                libros: []
             })
             console.log(res.user)
             setEmail('')

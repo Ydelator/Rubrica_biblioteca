@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Admin from './components/Admin'
 import Navbar from './components/Navbar'
 import { auth } from './firebase'
+import User from './components/User'
 
 function App() {
   const [firebaseUser, setFirebasUser] = React.useState(false)
@@ -28,6 +29,8 @@ function App() {
           <Route path='/' element={<Inicio/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='admin' element={<Admin/>}/>
+          <Route path='user' element={<User/>}/>
+          
         </Routes>
       </div>
     </Router>
