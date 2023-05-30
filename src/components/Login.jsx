@@ -76,7 +76,6 @@ const Login = () => {
             await db.collection('usuarios').doc(res.user.email).set({
                 email: res.user.email,
                 id: res.user.uid,
-                libros: []
             })
             console.log(res.user)
             setEmail('')
