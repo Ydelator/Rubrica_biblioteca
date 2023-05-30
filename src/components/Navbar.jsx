@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { auth } from '../firebase'
+import {firebase, auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 
 const Navbar = (props) => {
@@ -17,11 +17,15 @@ const Navbar = (props) => {
         <div className='d-flex'>
             <Link className='btn btn-dark' to={'/'}>Inicio</Link>
             {
-              props.firebaseUser !== null ?(
+              props.firebaseUser !== null && props.admin ==true ?(
                 <Link className='btn btn-dark' to={'/admin'}>Admin</Link>
               ):(null)
             }
-            
+            {
+              props.firebaseUser !== null && props.admin==false ?(
+                <Link className='btn btn-dark' to={'/user'}>Usuario</Link>
+              ):(null)
+            }
             {
               props.firebaseUser !== null ?(
                 <button className='btn btn-danger' onClick={cerrarSesion}>Cerrar sesion</button>

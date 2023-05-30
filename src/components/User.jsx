@@ -9,7 +9,7 @@ const User = () => {
     React.useEffect(()=>{
         if (auth.currentUser) {
             console.log('Existe un usuario')
-            setUser(auth.currentUser)
+            setUser(auth.currentUser.email)
         } else {
             console.log('No existe un usuario')
             navigate('/login')
@@ -20,10 +20,10 @@ const User = () => {
         <h2>Ruta protegida</h2>
         {
             user && (
-                <h3>Usuario: {user.email}</h3>
+                <h3>Usuario: {user}</h3>
             )
         }
-        <Consulta/>
+        <Consulta user = {user}></Consulta>
     </div>
   )
 }
