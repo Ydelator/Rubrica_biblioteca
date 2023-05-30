@@ -56,7 +56,8 @@ const Libros = () => {
           Autor: Autor,
           Descripcion: Descripcion,
           Año: Año,
-          Disponibilidad: 'Disponible'
+          Disponibilidad: 'Disponible',
+          Poseedor: ''
         }
         const dato = await db.collection('libros').add(nuevo)
         setLista([
