@@ -141,7 +141,7 @@ const Libros = () => {
           modoEdicion ? <h2 className='text-center text-success'>Editando libro</h2> :
           <h2 className='text-center text-primary'>Registro de libros</h2>
         }
-        <form className='col-6 offset-md-3' onSubmit={modoEdicion ? editarLibro : guardarDatos}>
+        <form className='col-6  offset-3' onSubmit={modoEdicion ? editarLibro : guardarDatos}>
           {
             Error ? (
               <div className='alert alert-danger' role='setError'>
