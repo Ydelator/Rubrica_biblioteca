@@ -52,7 +52,7 @@ const Newadmin = () => {
                 email: usuario.email,
                 id: usuario.id
             }*/
-            await db.collection('admin').doc(dato.id).set({
+            await db.collection('admin').add({
                 Nombre: dato.Nombre,
                 Apellido: dato.Apellido,
                 email: dato.email,
@@ -67,7 +67,7 @@ const Newadmin = () => {
   return (
     <div>
         <h1>Lista de usuarios</h1>
-        <ul>
+        <table>
             {
                 lista.map((elemento)=>(
                     <li key={elemento.id}>{elemento.Nombre}, {elemento.Apellido}, {elemento.email}
@@ -77,7 +77,7 @@ const Newadmin = () => {
                     </li>
                 ))
             }
-        </ul>
+        </table>
     </div>
   )
 }

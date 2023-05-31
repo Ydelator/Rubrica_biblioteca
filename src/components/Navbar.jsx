@@ -20,7 +20,6 @@ const Navbar = (props) => {
               props.firebaseUser !== null && props.admin ==true ?(
                 <div>
                 <Link className='btn btn-dark' to={'/admin'}>Admin</Link>
-                <Link className='btn btn-dark' to={'/newadmin'}>Convertir usuario</Link>
                 </div>
               ):(null)
             }
