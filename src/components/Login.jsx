@@ -86,8 +86,6 @@ const Login = () => {
                 Libros: []
             })
             console.log(res.user)
-            setNombre('')
-            setApellido('')
             setEmail('')
             setPass('')
             setError(null)
