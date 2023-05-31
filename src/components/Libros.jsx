@@ -165,7 +165,7 @@ const Libros = () => {
           value={Descripcion}
           onChange={(e)=>{setDescripcion(e.target.value)}}
           ></textarea>
-          <input type="text" 
+          <input type="number" 
           placeholder='Ingrese el año del libro'
           className='form-control mb-2'
           value={Año}
