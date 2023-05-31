@@ -8,6 +8,7 @@ import Admin from './components/Admin'
 import Navbar from './components/Navbar'
 import {firebase, auth } from './firebase'
 import User from './components/User'
+import Newadmin from './components/Newadmin'
 
 function App() {
   const [firebaseUser, setFirebasUser] = React.useState(false)
@@ -53,7 +54,7 @@ function App() {
           <Route path='login' element={<Login/>}/>
           <Route path='admin' element={<Admin/>}/>
           <Route path='user' element={<User/>}/>
-          
+          <Route path='newadmin' element={<Newadmin/>}/>
         </Routes>
       </div>
     </Router>

@@ -120,7 +120,7 @@ const Libros = () => {
         await db.collection('libros').doc(Id).update({
           Titulo, Autor, Descripcion, Año
         })
-        const listaEdit = Lista.map(elemento => elemento.id === Id ? {id:Id, Titulo:Titulo, Autor:Autor, Descripcion:Descripcion, Año:Año} :
+        const listaEdit = Lista.map(elemento => elemento.id === Id ? {id:Id, Titulo:Titulo, Autor:Autor, Descripcion:Descripcion, Año:Año, Disponibilidad: elemento.Disponibilidad, Poseedor: elemento.Poseedor} :
           elemento
           )
         setLista(listaEdit)
