@@ -136,12 +136,12 @@ const Libros = () => {
       }
     }
   return (
-    <div className='container'>
+    <div className='container aling-items-center'>
         {
           modoEdicion ? <h2 className='text-center text-success'>Editando libro</h2> :
           <h2 className='text-center text-primary'>Registro de libros</h2>
         }
-        <form onSubmit={modoEdicion ? editarLibro : guardarDatos}>
+        <form className='col-6 offset-md-3' onSubmit={modoEdicion ? editarLibro : guardarDatos}>
           {
             Error ? (
               <div className='alert alert-danger' role='setError'>
@@ -150,7 +150,6 @@ const Libros = () => {
             ) :
             null
           }
-          
           <input type="text" 
           placeholder='Ingrese el titulo del libro'
           className='form-control mb-2'
@@ -180,24 +179,31 @@ const Libros = () => {
             
           </div>
         </form>
-        <h1 className='text-center'>Lista de libros biblioteca</h1>
-        <ul className='list-group'>
+        <hr/>
+        <h1 className='text-center m-3'>Biblioteca</h1>
+        <div className='d-flex flex-row justify-content-start flex-wrap'>
           {
             Lista.map(
               (elemento)=>(
-                <li className='list-group-item' key={elemento.id}> {elemento.Titulo}, {elemento.Autor}, {elemento.Descripcion}, 
-                {elemento.Año}, {elemento.Disponibilidad}, {elemento.Poseedor}
+                <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2  col-4' key={elemento.id}>                 
+                <h3>{elemento.Titulo}</h3>
+                <h5>{elemento.Autor}</h5> 
+                <p>{elemento.Descripcion} {elemento.Año}</p>
+                <h6>{elemento.Disponibilidad}</h6>
+                <h6>{elemento.Poseedor}</h6>
                 <button 
                 onClick={()=>eliminarLibro(elemento.id)}
-                className='btn btn-outline-danger m-2'>Eliminar</button>
+                className='btn btn-outline-danger m-2 rounded-3'>Eliminar</button>
+                
                 <button 
                 onClick={()=>editar(elemento)}
-                className='btn btn-outline-warning m-2'>Editar</button>
-                </li>
+                className='btn btn-outline-warning m-2 rounded-3'>Editar
+                  </button>
+                </div>
               )
             )
           }
-        </ul>
+        </div>
       </div>
   )
 }

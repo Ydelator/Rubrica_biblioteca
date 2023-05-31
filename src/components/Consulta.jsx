@@ -88,38 +88,43 @@ const Consulta = (props) => {
 
   return user == auth.currentUser.email ? (
     <div>
-      <h1>Lista de libros disponibles</h1>
-      <ul className='list-group'>
+      <h1 className='text-center'>Biblioteca</h1>
+      <div className='d-flex flex-row justify-content-start flex-wrap'>
           {
             Lista.map(
               (elemento)=>(
-                <li className='list-group-item' key={elemento.id}> {elemento.Titulo}, {elemento.Autor}, {elemento.Descripcion}, 
-                {elemento.Año}, {elemento.Disponibilidad}
+                <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2  col-4' key={elemento.id}> 
+                <h3>{elemento.Titulo}</h3>
+                <h5>{elemento.Autor}</h5> 
+                <p>{elemento.Descripcion} {elemento.Año}</p>
+                <h6>{elemento.Disponibilidad}</h6>
                 <button
                 onClick={()=>prestarLibro(elemento.id)}
-                className='btn btn-outline-primary m-2'>Prestar</button>
-                </li>
+                className='btn btn-outline-primary m-2 rounded-3'>Prestar</button>
+                </div>
               )
             )
           }
-      </ul>
+      </div>
       <hr />
-      <h1>Lista de libros en posesion</h1>
-      <ul className='list-group'>
+      <h1 className='text-center'>Tus libros </h1>
+      <div className='d-flex flex-row justify-content-start flex-wrap'>
         {
           librosPrest.map(
             (elemento)=>(
-              <li className='list-group-item' key={elemento.id}>{elemento.Titulo}, {elemento.Autor}, {elemento.Descripcion}, 
-              {elemento.Año}
+              <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2   col-4' key={elemento.id}>
+                <h3>{elemento.Titulo}</h3>
+                <h5>{elemento.Autor}</h5> 
+                <p>{elemento.Descripcion} {elemento.Año}</p>
               <button
               onClick={()=>devolver(elemento.id)}
-              className='btn btn-outline-info m-2'>Devolver libro</button>
-              </li>
+              className='btn btn-outline-info m-2 rounded-3'>Devolver libro</button>
+              </div>
               
             )
           )
         }
-      </ul>
+      </div>
     </div>
   ):
   (<p>Loading...</p>)
