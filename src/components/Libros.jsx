@@ -155,16 +155,16 @@ const Libros = () => {
           placeholder='Ingrese el titulo del libro'
           className='form-control mb-2'
           value={Titulo}
-          onChange={(e)=>{setTitulo(e.target.value.trim())}}/>
+          onChange={(e)=>{setTitulo(e.target.value)}}/>
           <input type="text" 
           placeholder='Ingrese el autor del libro'
           className='form-control mb-2'
           value={Autor}
-          onChange={(e)=>{setAutor(e.target.value.trim())}}/>
+          onChange={(e)=>{setAutor(e.target.value)}}/>
           <textarea className='form-control'
           placeholder='Ingrese la descripcion del libro'
           value={Descripcion}
-          onChange={(e)=>{setDescripcion(e.target.value.trim())}}
+          onChange={(e)=>{setDescripcion(e.target.value)}}
           ></textarea>
           <input type="text" 
           placeholder='Ingrese el año del libro'
@@ -186,7 +186,7 @@ const Libros = () => {
             Lista.map(
               (elemento)=>(
                 <li className='list-group-item' key={elemento.id}> {elemento.Titulo}, {elemento.Autor}, {elemento.Descripcion}, 
-                {elemento.Año}, {elemento.Disponibilidad}
+                {elemento.Año}, {elemento.Disponibilidad}, {elemento.Poseedor}
                 <button 
                 onClick={()=>eliminarLibro(elemento.id)}
                 className='btn btn-outline-danger m-2'>Eliminar</button>

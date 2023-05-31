@@ -9,6 +9,8 @@ const Login = () => {
     const [modo, setModo] = React.useState(false)
     const [error, setError] = React.useState(null)
     const [lista, setLista] = React.useState([])
+    const [nombre, setNombre] = React.useState('')
+    const [apellido, setApellido] = React.useState('')
 
     const guardarDatos = (e) =>{
         e.preventDefault()
@@ -74,8 +76,11 @@ const Login = () => {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
             const db = firebase.firestore()
             await db.collection('usuarios').doc(res.user.email).set({
+                Nombre: nombre,
+                Apellido: apellido,
                 email: res.user.email,
                 id: res.user.uid,
+                Libros: []
             })
             console.log(res.user)
             setEmail('')
@@ -110,6 +115,16 @@ const Login = () => {
                                 {error}
                             </div>
                         )
+                    }
+                    {
+                        modo ? (
+                            <div>
+                            <input type="text" className='form-control mb-2' 
+                            placeholder='Ingrese su Nombre' onChange={e=>setNombre(e.target.value.trim())}/>
+                            <input type="text" className='form-control mb-2' 
+                            placeholder='Ingrese su Apellido' onChange={e=>setApellido(e.target.value.trim())}/>
+                            </div>
+                        ):(null)
                     }
                     <input type="email" className='form-control mb-2' 
                     placeholder='Ingrese su email' onChange={e=>setEmail(e.target.value.trim())}/>
