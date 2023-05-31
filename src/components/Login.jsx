@@ -14,14 +14,6 @@ const Login = () => {
 
     const guardarDatos = (e) =>{
         e.preventDefault()
-        if (!nombre.trim()) {
-            setError('Ingrese un nombre')
-            return
-        }
-        if (!apellido.trim()) {
-            setError('Ingrese un apellido')
-            return
-        }
         if (!email.trim()) {
             setError('Ingrese el email')
             return
