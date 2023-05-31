@@ -81,6 +81,7 @@ const Login = () => {
             setEmail('')
             setPass('')
             setError(null)
+            navigate('/user')
         } catch (error) {
             console.error(error.code)
             if (error.code==='auth/invalid-email') {
@@ -95,7 +96,7 @@ const Login = () => {
     },[email, pass])
 
   return (
-    <div>
+    <div className='login-registro'>
         <h3 className='text-center text-primary'>
             {
                 modo ? 'Registro de usuario' :
