@@ -93,7 +93,7 @@ const Consulta = (props) => {
           {
             Lista.map(
               (elemento)=>(
-                <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2  col-4' key={elemento.id}> 
+                <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2 col-lg-4 col-sm-12 col-md-6 col-xl-4 col-xs-12' key={elemento.id}> 
                 <h3>{elemento.Titulo}</h3>
                 <h5>{elemento.Autor}</h5> 
                 <p>{elemento.Descripcion} {elemento.Año}</p>
@@ -112,7 +112,7 @@ const Consulta = (props) => {
         {
           librosPrest.map(
             (elemento)=>(
-              <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2   col-4' key={elemento.id}>
+              <div className='d-flex flex-column justify-content-around p-4 border border-dark border-opacity-75 mb-3 rounded p-2 col-lg-4 col-sm-12 col-md-6 col-xl-4 col-xs-12' key={elemento.id}>
                 <h3>{elemento.Titulo}</h3>
                 <h5>{elemento.Autor}</h5> 
                 <p>{elemento.Descripcion} {elemento.Año}</p>
