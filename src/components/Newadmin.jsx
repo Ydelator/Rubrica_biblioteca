@@ -19,7 +19,7 @@ const Newadmin = () => {
             }
         }
         obtenerDatos()
-    },[])
+    },[actualizar])
 
     const hacerAdmin = async (dato) =>{
         try {
@@ -37,17 +37,28 @@ const Newadmin = () => {
             }))
             //console.log(libroMap)
             for (let index = 0; index < libroMap.length; index++) {
-                if (libroMap[index].id) {
+                if (libroMap[index].Poseedor==dato.email) {
                     await db.collection('libros').doc(libroMap[index].id).update({
                         Disponibilidad: 'Disponible',
                         Poseedor: ''
                     })
                 }
-                
-                console.log(libroMap)
+                //console.log(libroMap)
             }
             await db.collection('usuarios').doc(dato.email).delete()
-            await db.collection('admin').add(usuario)
+            /*const nuevoAdmin = {
+                Nombre: usuario.Nombre,
+                Apellido: usuario.Apellido,
+                email: usuario.email,
+                id: usuario.id
+            }*/
+            await db.collection('admin').doc(dato.id).set({
+                Nombre: dato.Nombre,
+                Apellido: dato.Apellido,
+                email: dato.email,
+                id: dato.id
+            })
+            setActualizar(!actualizar)
         } catch (error) {
             console.error(error)
         }

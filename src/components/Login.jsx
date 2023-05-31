@@ -66,11 +66,6 @@ const Login = () => {
         }
     }, [email, pass])
 
-    const confirmacion = React.useCallback(async()=>{
-        
-        setLista(arrayData)
-    })
-
     const registrar = React.useCallback(async()=>{
         try {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
