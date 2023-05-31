@@ -13,12 +13,14 @@ const Navbar = (props) => {
     }
   return (
     <div className='navbar navbar-dark bg-dark'>
-        <Link className='navbar-brand' to={'/'}>Biblioteca</Link>
+        <Link className='navbar-brand' to={'/'}><img src='https://static.vecteezy.com/system/resources/previews/017/052/179/non_2x/stack-of-books-book-day-free-png.png' className='icon'></img> Biblioteca</Link>
         <div className='d-flex'>
             <Link className='btn btn-dark' to={'/'}>Inicio</Link>
             {
               props.firebaseUser !== null && props.admin ==true ?(
+                <div>
                 <Link className='btn btn-dark' to={'/admin'}>Admin</Link>
+                </div>
               ):(null)
             }
             {
